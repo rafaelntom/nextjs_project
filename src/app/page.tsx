@@ -1,11 +1,13 @@
+import ImageSlideshow from "@/components/images/images-slideshow/images-slideshow";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
       <header className="flex gap-12 mx-auto my-12 w-[90%] max-w-[75rem]">
-        <div className="w-[40rem] h-[25rem] bg-gray-700"></div>{" "}
-        {/* Placeholder for slideshow */}
+        <div className="w-[30rem] h-[25rem] bg-transparent">
+          <ImageSlideshow />
+        </div>
         <div>
           <div className="text-[#ddd6cb] text-xl">
             <h1 className="text-3xl font-bold uppercase tracking-wide bg-gradient-to-r from-[#f9572a] to-[#ffc905] bg-clip-text text-transparent">
