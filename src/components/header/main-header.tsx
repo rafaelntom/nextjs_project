@@ -24,9 +24,7 @@ const MainHeader = () => {
       <nav>
         <ul className="flex gap-6 text-lg">
           <li>
-            <li className="group">
-              <HeaderLink href="/meals">Browse Meals</HeaderLink>
-            </li>
+            <HeaderLink href="/meals">Browse Meals</HeaderLink>
           </li>
 
           <li className="group">

@@ -1,14 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
-
-interface MealItemProps {
-  title: string;
-  slug: string;
-  image: string;
-  summary: string;
-  creator: string;
-}
+import { MealItemProps } from "@/types/meals/meals-types";
 
 const MealItem: React.FC<MealItemProps> = ({ title, slug, image, summary, creator }) => {
   return (
@@ -17,6 +10,7 @@ const MealItem: React.FC<MealItemProps> = ({ title, slug, image, summary, creato
         <div className="relative h-60 w-full">
           <Image src={image} alt={title} fill className="object-cover" />
         </div>
+        <p>{image}</p>
         <div className="p-2 text-center">
           <h2 className="text-2xl font-montserrat font-bold">{title}</h2>
           <p className="text-sm text-[#cfa69b] italic">by {creator}</p>
