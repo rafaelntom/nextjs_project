@@ -1,94 +1,45 @@
-import React from "react";
+import ImagePicker from "./image-picker";
+import classes from "./page.module.css";
 
-const ShareMealPage: React.FC = () => {
+export default function ShareMealPage() {
   return (
     <>
-      <header className="text-center my-12 text-[#ddd6cb]">
-        <h1 className="text-3xl font-bold font-montserrat">
-          Share your{" "}
-          <span className="bg-gradient-to-r from-[#f9572a] to-[#ff8a05] bg-clip-text text-transparent">
-            favorite meal
-          </span>
+      <header className={classes.header}>
+        <h1>
+          Share your <span className={classes.highlight}>favorite meal</span>
         </h1>
-        <p className="text-xl">Or any other meal you feel needs sharing!</p>
+        <p>Or any other meal you feel needs sharing!</p>
       </header>
-      <main className="w-[90%] max-w-2xl mx-auto text-white">
-        <form className="flex flex-col gap-6 bg-gray-800 p-6 rounded-lg shadow-md">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="w-full">
-              <label htmlFor="name" className="block text-sm font-bold text-[#b3aea5]">
-                Your name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                className="w-full p-2 border border-gray-600 bg-gray-900 rounded-md text-white"
-              />
-            </div>
-            <div className="w-full">
-              <label htmlFor="email" className="block text-sm font-bold text-[#b3aea5]">
-                Your email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                className="w-full p-2 border border-gray-600 bg-gray-900 rounded-md text-white"
-              />
-            </div>
+      <main className={classes.main}>
+        <form className={classes.form}>
+          <div className={classes.row}>
+            <p>
+              <label htmlFor="name">Your name</label>
+              <input type="text" id="name" name="name" required />
+            </p>
+            <p>
+              <label htmlFor="email">Your email</label>
+              <input type="email" id="email" name="email" required />
+            </p>
           </div>
-          <div>
-            <label htmlFor="title" className="block text-sm font-bold text-[#b3aea5]">
-              Title
-            </label>
-            <input
-              type="text"
-              id="title"
-              name="title"
-              required
-              className="w-full p-2 border border-gray-600 bg-gray-900 rounded-md text-white"
-            />
-          </div>
-          <div>
-            <label htmlFor="summary" className="block text-sm font-bold text-[#b3aea5]">
-              Short Summary
-            </label>
-            <input
-              type="text"
-              id="summary"
-              name="summary"
-              required
-              className="w-full p-2 border border-gray-600 bg-gray-900 rounded-md text-white"
-            />
-          </div>
-          <div>
-            <label htmlFor="instructions" className="block text-sm font-bold text-[#b3aea5]">
-              Instructions
-            </label>
-            <textarea
-              id="instructions"
-              name="instructions"
-              rows={5}
-              required
-              className="w-full p-2 border border-gray-600 bg-gray-900 rounded-md text-white"
-            ></textarea>
-          </div>
-          <p className="text-center text-gray-400">IMAGE PICKER</p>
-          <div className="text-right">
-            <button
-              type="submit"
-              className="px-4 py-2 bg-gradient-to-r from-[#f9572a] to-[#ff9b05] text-white font-bold rounded-lg hover:from-[#fd4715] hover:to-[#f9b241] shadow-md"
-            >
-              Share Meal
-            </button>
-          </div>
+          <p>
+            <label htmlFor="title">Title</label>
+            <input type="text" id="title" name="title" required />
+          </p>
+          <p>
+            <label htmlFor="summary">Short Summary</label>
+            <input type="text" id="summary" name="summary" required />
+          </p>
+          <p>
+            <label htmlFor="instructions">Instructions</label>
+            <textarea id="instructions" name="instructions" rows={10} required></textarea>
+          </p>
+          <ImagePicker name={"image-picker"} />
+          <p className={classes.actions}>
+            <button type="submit">Share Meal</button>
+          </p>
         </form>
       </main>
     </>
   );
-};
-
-export default ShareMealPage;
+}
