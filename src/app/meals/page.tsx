@@ -30,7 +30,7 @@ export default function MealsPage() {
           </Link>
         </p>
       </header>
-      <main className="w-full flex justify-center">
+      <main className="w-full flex justify-center mb-20">
         <Suspense fallback={<Loading />}>
           <Meals />
         </Suspense>

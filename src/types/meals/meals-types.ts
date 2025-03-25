@@ -10,3 +10,14 @@ export interface MealItemProps {
 export interface MealGridProps {
   meals: MealItemProps[];
 }
+
+export interface MealCreation {
+  title: string;
+  summary: string;
+  instructions: string;
+  id: number;
+  slug: string;
+  image: File;
+  creator: string;
+  creator_email: string;
+}

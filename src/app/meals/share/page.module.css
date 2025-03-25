@@ -71,6 +71,22 @@
     text-align: right;
 }
 
+.inputRequired {
+    outline: none;
+    border: 1px solid #ccc;
+
+}
+
+.inputRequired:user-invalid {
+    outline: 2px solid #f9572a;
+
+}
+
+.inputRequired:focus {
+    outline: 2px solid #007bff;
+
+}
+
 .actions button {
     border: 0;
     padding: 0.75rem 2rem;

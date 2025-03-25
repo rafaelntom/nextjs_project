@@ -1,3 +1,4 @@
+import { shareMeal } from "@/libs/actions";
 import ImagePicker from "./image-picker";
 import classes from "./page.module.css";
 
@@ -11,28 +12,58 @@ export default function ShareMealPage() {
         <p>Or any other meal you feel needs sharing!</p>
       </header>
       <main className={classes.main}>
-        <form className={classes.form}>
+        <form className={classes.form} action={shareMeal}>
           <div className={classes.row}>
             <p>
               <label htmlFor="name">Your name</label>
-              <input type="text" id="name" name="name" required />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                className={classes.inputRequired}
+              />
             </p>
             <p>
               <label htmlFor="email">Your email</label>
-              <input type="email" id="email" name="email" required />
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                className={classes.inputRequired}
+              />
             </p>
           </div>
           <p>
             <label htmlFor="title">Title</label>
-            <input type="text" id="title" name="title" required />
+            <input
+              type="text"
+              id="title"
+              name="title"
+              required
+              className={classes.inputRequired}
+            />
           </p>
           <p>
             <label htmlFor="summary">Short Summary</label>
-            <input type="text" id="summary" name="summary" required />
+            <input
+              type="text"
+              id="summary"
+              name="summary"
+              required
+              className={classes.inputRequired}
+            />
           </p>
           <p>
             <label htmlFor="instructions">Instructions</label>
-            <textarea id="instructions" name="instructions" rows={10} required></textarea>
+            <textarea
+              id="instructions"
+              name="instructions"
+              rows={10}
+              required
+              className={classes.inputRequired}
+            ></textarea>
           </p>
           <ImagePicker name={"image-picker"} />
           <p className={classes.actions}>
