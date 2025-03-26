@@ -5,8 +5,18 @@ import slugify from "slugify";
 import xss from "xss";
 const prisma = new PrismaClient();
 
-export const getMeals = async () => {
-  return await prisma.meal.findMany();
+export const getMeals = async (page: number = 1, limit: number = 6) => {
+  const skip = (page - 1) * limit;
+
+  return await prisma.meal.findMany({
+    skip,
+    take: limit,
+  });
+};
+
+// Also add a function to get total count
+export const getMealsCount = async () => {
+  return await prisma.meal.count();
 };
 
 export const getMeal = async (slug: string) => {

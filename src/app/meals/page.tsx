@@ -1,16 +1,33 @@
 import { Suspense } from "react";
 import MealsGrid from "@/components/meals/meals-grid";
-import { getMeals } from "@/libs/meals";
+import { getMeals, getMealsCount } from "@/libs/meals";
 import Link from "next/link";
 import Loading from "./loading";
+import PaginationControls from "@/components/pagination/pagination-control";
 
-async function Meals() {
-  const meals = await getMeals();
+async function Meals({ searchParams }: { searchParams: { page?: string } }) {
+  const currentPage = Number(searchParams.page) || 1;
+  const limit = 6;
+  const [meals, totalCount] = await Promise.all([
+    getMeals(currentPage, limit),
+    getMealsCount(),
+  ]);
 
-  return <MealsGrid meals={meals} />;
+  const totalPages = Math.ceil(totalCount / limit);
+
+  return (
+    <div className="flex flex-col">
+      <MealsGrid meals={meals} />
+      <PaginationControls currentPage={currentPage} totalPages={totalPages} />
+    </div>
+  );
 }
 
-export default function MealsPage() {
+export default async function MealsPage({
+  searchParams,
+}: {
+  searchParams: { page?: string };
+}) {
   return (
     <>
       <header className="flex flex-col items-center text-center gap-12 my-12 mx-auto w-[90%] max-w-[75rem] text-[#ddd6cb] text-xl">
@@ -32,7 +49,7 @@ export default function MealsPage() {
       </header>
       <main className="w-full flex justify-center mb-20">
         <Suspense fallback={<Loading />}>
-          <Meals />
+          <Meals searchParams={searchParams} />
         </Suspense>
       </main>
     </>
