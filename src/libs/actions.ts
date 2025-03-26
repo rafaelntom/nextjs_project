@@ -1,14 +1,31 @@
 "use server";
 
+import { createAndStoreMeal } from "./meals";
+
 export const shareMeal = async (formData: FormData) => {
+  const creator = formData.get("name");
+  const creator_email = formData.get("email");
+  const title = formData.get("title");
+  const summary = formData.get("summary");
+  const instructions = formData.get("instructions");
+  const image = formData.get("image-picker");
+
+  if (!creator || !creator_email || !title || !summary || !instructions || !image) {
+    throw new Error("All fields are required");
+  }
+
+  if (!(image instanceof File)) {
+    throw new Error("Invalid image file");
+  }
+
   const meal = {
-    creator: formData.get("name"),
-    creator_email: formData.get("email"),
-    title: formData.get("title"),
-    summary: formData.get("summary"),
-    instructions: formData.get("instructions"),
-    image: formData.get("image-picker"),
+    creator: creator.toString(),
+    creator_email: creator_email.toString(),
+    title: title.toString(),
+    summary: summary.toString(),
+    instructions: instructions.toString(),
+    image: image as File,
   };
 
-  console.log(meal);
+  await createAndStoreMeal(meal);
 };

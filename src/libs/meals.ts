@@ -17,7 +17,7 @@ export const getMeal = async (slug: string) => {
   });
 };
 
-export const createMeal = async (meal: MealCreation) => {
+export const createAndStoreMeal = async (meal: MealCreation) => {
   try {
     const slug = slugify(meal.title, { lower: true });
 
@@ -39,7 +39,8 @@ export const createMeal = async (meal: MealCreation) => {
     const newMeal = await prisma.meal.create({
       data: {
         ...meal,
-        image: `images/${fileName}`,
+        slug: slug,
+        image: `/images/${fileName}`,
       },
     });
 

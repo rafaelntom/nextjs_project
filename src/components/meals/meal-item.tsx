@@ -10,7 +10,6 @@ const MealItem: React.FC<MealItemProps> = ({ title, slug, image, summary, creato
         <div className="relative h-60 w-full">
           <Image src={image} alt={title} fill className="object-cover" />
         </div>
-
         <div className="p-2 text-center">
           <h2 className="text-2xl font-montserrat font-bold">{title}</h2>
           <p className="text-sm text-[#cfa69b] italic">by {creator}</p>
